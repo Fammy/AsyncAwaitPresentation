@@ -121,7 +121,7 @@
                     </p>
 
                     <aside class="notes">
-                        <li class="fragment">Example: 4 exception handling</li>
+                        <li>Example: 4 exception handling</li>
                     </aside>
                 </section>
 
@@ -133,7 +133,7 @@
                     </ul>
 
                     <aside class="notes">
-                        <li class="fragment">Example 5: nexted async calls, no voids</li>
+                        <li>Example 5: nested async calls, no voids</li>
                     </aside>
                 </section>
 
@@ -170,9 +170,9 @@
                 //parallaxBackgroundSize: '2100px 900px',
 
                 multiplex: {
-                        //secret: null,
-                        secret: '',
-                        id: '', // id, obtained from socket.io server
+                        secret: null,
+                        //secret: '14141842342386489848',
+                        id: 'c67ea84c7c5992f0', // id, obtained from socket.io server
                         url: 'revealjs.jit.su:80' // Location of socket.io server
                     },
 
@@ -185,8 +185,8 @@
                     { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
                     { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
                     { src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
-                    { src: 'plugin/multiplex/master.js', async: true }                ]
-                    //{ src: 'plugin/multiplex/client.js', async: true }                ]
+                    //{ src: 'plugin/multiplex/master.js', async: true }                ]
+                    { src: 'plugin/multiplex/client.js', async: true }                ]
             });
 
         </script>
