@@ -1,0 +1,15 @@
+.DS_Store
+src/.svn
+src/node_modules/
+slides/node_modules/
+.sass-cache
+[Oo]bj
+[Bb]in
+deploy
+deploy/*
+*.csproj.user
+*.suo
+*.cache
+packages
+*.userprefs
+*.user

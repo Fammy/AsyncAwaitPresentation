@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Wrapping your brain around Async and Await in C#</title>
+
+        <meta name="description" content="An introduction to mobile development with Xamarin">
+        <meta name="author" content="Jason Famularo">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/tweaks.css">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h2>Wrapping your brain around Async and Await in C#</h2>
+                    <img src="images/brain.png">
+                    <p>Follow along @ <a href="http://fammy.github.io/async">http://fammy.github.io/async</a></p>
+                </section>
+
+                <section>
+                    <h2>Jason Famularo</h2>
+                    <h3>
+                        <a href="mailto:jason@famularo.org">jason@famularo.org</a> or
+                        <a href="http://twitter.com/splodn">@splodn</a>
+                    </h3>
+                    <p>
+                        Stop me and ask questions! (Although I may save them for the end)
+                    </p>
+                </section>
+
+                <section>
+                    <h2>What is Async?</h2>
+                    <img src="images/asink.png" class="fragment">
+                </section>
+
+                <section>
+                    <h2>What is Async?</h2>
+                    <h4 class="fragment">Synchronous: run code in order, from top to bottom, one statement at a time</h4>
+                    <h4 class="fragment">Asynchronous: (potentially) run multiple code statements at once</h4>
+
+                    <p>
+                        <img src="images/asink.png" class="fragment">
+                        <img src="images/asink.png" class="fragment">
+                        <img src="images/asink.png" class="fragment">
+                    </p>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Sync sink example: like having 4 sinks, turning one one at a time, letting it fill, then starting another, and so on</li>
+                            <li>Async sink example: having 4 sinks, turning them all one at a time, all filling at the same time</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Why do we need async?</h2>
+                    <ul>
+                        <li class="fragment">Asynchronous programming has traditionally been really, really hard</li>
+                        <li class="fragment">Keeps UI from being blocked on long running tasks</li>
+                        <li class="fragment">Lots of newer APIs are async</li>
+                        <li class="fragment">Mobile OSes disallow networking to run on UI thread</li>
+                    </ul>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Explain UI thread</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>How do you async in C#?</h2>
+                    <h4>Let's look at some code</h4>
+                    <p>
+                        <img src="images/please.jpg" />
+                    </p>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Example 1: understanding sync vs async</li>
+                            <li>Bonus spot async bug in example 1 DoAsyncTheRightWay</li>
+                            <li>Example 2: what it used to be</li>
+                            <li>Example 3: real world</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Exception handling</h2>
+                    <p>
+                        Async greatly simplifies exception handling
+                    </p>
+
+                    <aside class="notes">
+                        <li class="fragment">Example: 4 exception handling</li>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Common Pitfalls</h2>
+                    <ul>
+                        <li class="fragment">Not asyncing all the things!</li>
+                        <li class="fragment">Avoid "async void". At almost all costs.</li>
+                    </ul>
+
+                    <aside class="notes">
+                        <li class="fragment">Example 5: nexted async calls, no voids</li>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                    <p>
+                        <img src="images/questions.jpg" />
+                    </p>
+                    <h4>Ask away!</h4>
+                    <br/>
+                    <h2>Jason Famularo</h2>
+                    <h3>
+                        <a href="mailto:jason@famularo.org">jason@famularo.org</a> or
+                        <a href="http://twitter.com/splodn">@splodn</a>
+                    </h3>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+            Reveal.initialize({
+                controls: false,
+                progress: true,
+                history: true,
+                center: false,
+
+                transition: 'linear',
+
+                //parallaxBackgroundImage: 'tg1.png',
+                //parallaxBackgroundSize: '2100px 900px',
+
+                multiplex: {
+                        //secret: null,
+                        secret: '14079760930013402780',
+                        id: '3327411aec0cb7b6', // id, obtained from socket.io server
+                        url: 'revealjs.jit.su:80' // Location of socket.io server
+                    },
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
+                    { src: 'plugin/multiplex/master.js', async: true }                ]
+                    //{ src: 'plugin/multiplex/client.js', async: true }                ]
+            });
+
+        </script>
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-22035260-18', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+
+    </body>
+</html>
